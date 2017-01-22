@@ -11,59 +11,51 @@ $mysqli = new mysqli('127.0.0.1', 'root', '', 'test-php');
 $edit_id=-1;
 $btn_value="Save";
 $errors=[];
-$first_name="";
-$last_name="";
-$phone="";
-$email="";
-$s_first_name="";
-$s_last_name="";
-$s_phone="";
-$s_email="";
+$product_name="";
+$product_code="";
+$price="";
+$s_product_name="";
+$s_product_code="";
+$s_price="";
 
 if (isset($_REQUEST["save_btn"])){
     $is_valid = true;
-    if (strlen($_REQUEST["first_name"]) == 0) {
+    if (strlen($_REQUEST["product_name"]) == 0) {
         $is_valid = false;
-        $errors[] = "Field first name must have a value.";
+        $errors[] = "Field product name must have a value.";
     }
-    if (strlen($_REQUEST["last_name"]) == 0) {
+    if (strlen($_REQUEST["product_code"]) == 0) {
         $is_valid = false;
-        $errors[] = "Field last name must have a value.";
+        $errors[] = "Field product code must have a value.";
     }
-    if (strlen($_REQUEST["phone"]) == 0) {
+    if (strlen($_REQUEST["price"]) == 0) {
         $is_valid = false;
-        $errors[] = "Field phone must have a value.";
-    }
-    if (strlen($_REQUEST["email"]) == 0) {
-        $is_valid = false;
-        $errors[] = "Field email must have a value.";
+        $errors[] = "Field price must have a value.";
     }
     if ($is_valid){
         if ($_REQUEST["save_btn"]=="Save") {
-            $sql="insert into clients (first_name, last_name, phone, email)\n";
-            $sql.="values('%s','%s','%s','%s')";
-            $query=sprintf($sql,$_REQUEST["first_name"],$_REQUEST["last_name"],$_REQUEST["phone"],$_REQUEST["email"]);
+            $sql="insert into products (product_name, product_code, price)\n";
+            $sql.="values('%s','%s','%s')";
+            $query=sprintf($sql,$_REQUEST["product_name"],$_REQUEST["product_code"],$_REQUEST["price"]);
             $result = $mysqli->query($query);
 
         }
         if ($_REQUEST["save_btn"]=="Update"){
             $edit_id=$_REQUEST["edit_id"];
-            $sql="update clients set\n";
-            $sql.="first_name='%s',\n";
-            $sql.="last_name='%s',\n";
-            $sql.="phone='%s',\n";
-            $sql.="email='%s'\n";
+            $sql="update products set\n";
+            $sql.="product_name='%s',\n";
+            $sql.="product_code='%s',\n";
+            $sql.="price='%s'\n";
             $sql.="where id=%d";
-            $query=sprintf($sql,$_REQUEST["first_name"],$_REQUEST["last_name"],$_REQUEST["phone"],$_REQUEST["email"],$edit_id);
+            $query=sprintf($sql,$_REQUEST["product_name"],$_REQUEST["product_code"],$_REQUEST["price"],$edit_id);
             $result = $mysqli->query($query);
 
         }
     } else {
-        $first_name = $_REQUEST["first_name"];
-        $last_name = $_REQUEST["last_name"];
-        $phone = $_REQUEST["phone"];
-        $email = $_REQUEST["email"];
-    }
+        $product_name = $_REQUEST["product_name"];
+        $product_code = $_REQUEST["product_code"];
+        $price = $_REQUEST["price"];
+    }    
 }
 $operation="list";
 if (isset($_REQUEST["operation"])) {
@@ -71,7 +63,7 @@ if (isset($_REQUEST["operation"])) {
 }
 if ($operation=="delete"){
     $id=$_REQUEST["id"];
-    $sql="delete from clients\n";
+    $sql="delete from products\n";
     $sql.="where id=%d";
     $query=sprintf($sql,$id);
     $result = $mysqli->query($query);
@@ -79,57 +71,50 @@ if ($operation=="delete"){
 if ($operation=="edit"){
     $id=$_REQUEST["id"];
     $edit_id=$id;
-    $sql="select * from clients\n";
+    $sql="select * from products\n";
     $sql.="where id=%d";
     $query=sprintf($sql,$edit_id);
     $result = $mysqli->query($query);
-    $client = $result->fetch_assoc();
-    $first_name=$client["first_name"];
-    $last_name=$client["last_name"];
-    $phone=$client["phone"];
-    $email=$client["email"];
+    $product = $result->fetch_assoc();
+    $product_name=$product["product_name"];
+    $product_code=$product["product_code"];
+    $price=$product["price"];
     $btn_value="Update";
 }
 
-$sql="select * from clients\n";
+$sql="select * from products\n";
 $sql.="where (1=1)\n";
 if (isset($_REQUEST["search_btn"])){
-    $s_first_name=$_REQUEST["s_first_name"];
-    $s_last_name=$_REQUEST["s_last_name"];
-    $s_phone=$_REQUEST["s_phone"];
-    $s_email=$_REQUEST["s_email"];
-    if (strlen($s_first_name)>0) {
-        $sql.="and(first_name like '%".$s_first_name."%')\n";
+    $s_product_name=$_REQUEST["s_product_name"];
+    $s_product_code=$_REQUEST["s_product_code"];
+    $s_price=$_REQUEST["s_price"];
+    if (strlen($s_product_name)>0) {
+        $sql.="and(product_name like '%".$s_product_name."%')\n";
     }
-    if (strlen($s_last_name)>0) {
-        $sql.="and(last_name like '%".$s_last_name."%')\n";
+    if (strlen($s_product_code)>0) {
+        $sql.="and(product_code like '%".$s_product_code."%')\n";
     }
-    if (strlen($s_phone)>0) {
-        $sql.="and(phone like '%".$s_phone."%')\n";
-    }
-    if (strlen($s_email)>0) {
-        $sql.="and(email like '%".$s_email."%')\n";
-    }
+    if (strlen($s_price)>0) {
+        $sql.="and(price =  ".$s_price.")\n";
+    }    
 }
 $result = $mysqli->query($sql);
 
-$clients = [];
-while ($client = $result->fetch_assoc()) {
-    $clients[] = $client;
+$products = [];
+while ($product = $result->fetch_assoc()) {
+    $products[] = $product;
 } 
 
-$data['clients'] = $clients;
+$data['products'] = $products;
 
 $data['edit_id'] = $edit_id;
-$data['first_name'] = $first_name;
-$data['last_name'] = $last_name;
-$data['phone'] = $phone;
-$data['email'] = $email;
-$data['s_first_name'] = $s_first_name;
-$data['s_last_name'] = $s_last_name;
-$data['s_phone'] = $s_phone;
-$data['s_email'] = $s_email;
+$data['product_name'] = $product_name;
+$data['product_code'] = $product_code;
+$data['price'] = $price;
+$data['s_product_name'] = $s_product_name;
+$data['s_product_code'] = $s_product_code;
+$data['s_price'] = $s_price;
 $data['btn_value'] = $btn_value;
 $data['errors'] = $errors;
 
-echo $twig->render('clients-template.php', $data);
+echo $twig->render('products-template.php', $data);

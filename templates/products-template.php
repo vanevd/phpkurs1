@@ -5,14 +5,13 @@
     </head>
     
     <body>
-        <form method="POST" action='clients.php'>
+        <form method="POST" action='products.php'>
         {% for error in errors %} 
             <font color="red">{{ error }}</font><br>
         {% endfor %}
-        First Name <input type="text" name="s_first_name" value="{{ s_first_name }}">
-        Last Name <input type="text" name="s_last_name" value="{{ s_last_name }}">
-        Phone <input type="text" name="s_phone" value="{{ s_phone }}">
-        Email <input type="text" name="s_email" value="{{ s_email }}">
+        Product Name <input type="text" name="s_product_name" value="{{ s_product_name }}">
+        Product Code <input type="text" name="s_product_code" value="{{ s_product_code }}">
+        Price <input type="text" name="s_price" value="{{ s_price }}">
         <br>
         <input type="submit" name='search_btn' value="Search">
         <input type="submit" name='clear_btn' value="Clear">
@@ -21,38 +20,33 @@
             
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name </th>
-                <th>Phone</th>
-                <th>Email</th> 
+                <th>Product Name</th>
+                <th>Product Code </th>
+                <th>Price</th>
                 <th>Delete</th>
                 <th>Edit</th>
             </tr>
-            {% for client in clients %} 
+            {% for product in products %} 
             <tr>
-                <td>{{ client['id'] }}</td>
-                <td>{{ client['first_name'] }}</td>
-                <td>{{ client['last_name'] }}</td>
-                <td>{{ client['phone'] }}</td>
-                <td>{{ client['email'] }}</td>
-                <td><a href='clients.php?operation=delete&id={{ client['id'] }}'>delete</a></td>
-                <td><a href='clients.php?operation=edit&id={{ client['id'] }}'>edit</a></td>
+                <td>{{ product['id'] }}</td>
+                <td>{{ product['product_name'] }}</td>
+                <td>{{ product['product_code'] }}</td>
+                <td>{{ product['price'] }}</td>
+                <td><a href='products.php?operation=delete&id={{ product['id'] }}'>delete</a></td>
+                <td><a href='products.php?operation=edit&id={{ product['id'] }}'>edit</a></td>
             </tr>
             {% endfor %}
         </table>
         
             <input type="hidden" name="edit_id" value="{{ edit_id }}">
-            First Name<br/>
-            <input type="text" name="first_name" value="{{ first_name }}"><br/>
+            Product Name<br/>
+            <input type="text" name="product_name" value="{{ product_name }}"><br/>
             <br/>
-            Last Name<br/>
-            <input type="text" name="last_name" value="{{ last_name }}"><br/>
+            Product Code<br/>
+            <input type="text" name="product_code" value="{{ product_code }}"><br/>
             <br/>
-            Phone<br/>
-            <input type="text" name="phone" value="{{ phone }}"><br/>
-            <br/>            
-            Email<br/>
-            <input type="text" name="email" value="{{ email }}"><br/>
+            Price<br/>
+            <input type="text" name="price" value="{{ price }}"><br/>          
             <br/>            
             <input type="submit" name='save_btn' value="{{ btn_value }}">
             
