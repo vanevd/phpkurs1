@@ -25,13 +25,13 @@
             </tr>
             {% for client in clients %} 
             <tr>
-                <td>{{ client_id }}</td>
-                <td>{{ client_first_name }}</td>
-                <td>{{ client_last_name }}</td>
-                <td>{{ client_phone }}</td>
-                <td>{{ client_email }}</td>
-                <td><a href='test13.php?operation=delete&id={{ client_id }}'>delete</a></td>
-                <td><a href='test13.php?operation=edit&id={{ client_id }}'>edit</a></td>
+                <td>{{ client['id'] }}</td>
+                <td>{{ client['first_name'] }}</td>
+                <td>{{ client['last_name'] }}</td>
+                <td>{{ client['phone'] }}</td>
+                <td>{{ client['email'] }}</td>
+                <td><a href='test13.php?operation=delete&id={{ client['id'] }}'>delete</a></td>
+                <td><a href='test13.php?operation=edit&id={{ client['id'] }}'>edit</a></td>
             </tr>
             {% endfor %}
         </table>
