@@ -1,0 +1,13 @@
+
+.myTable {
+    border-color: blue;
+    border-style: solid;
+    margin-left: 135px;
+    margin-top: 50px;
+}            
+.myTable1 {
+    border-color: red;
+    border-style: dotted;
+    margin-left: 35px;
+    margin-top: 50px;
+}   
