@@ -9,13 +9,13 @@
   
 </head>    
     <body>
-        <form method="POST" action='clients.php'>
+        <form method="POST" action='orders.php'>
         <div class="container">
             <h3>Online shop</h3>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="clients.php">Clients</a></li>
+                <li><a href="clients.php">Clients</a></li>
                 <li><a href="products.php">Products</a></li>
-                <li><a href="orders.php">Orders</a></li>
+                <li class="active"><a href="orders.php">Orders</a></li>
                 <li><a href="order-details.php">Order detail</a></li>
             </ul>
             <div class="panel panel-default">
@@ -26,28 +26,28 @@
         <div class="row">    
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="s_first_name">First Name:</label>
-              <input class="form-control" id="s_first_name" type="text" name="s_first_name" value="{{ s_first_name }}">
+              <label for="s_order_number">Order Number:</label>
+              <input class="form-control" id="s_order_number" type="text" name="s_order_number" value="{{ s_order_number }}">
             </div>
           </div>    
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="s_last_name">Last Name:</label>
-              <input class="form-control" id="s_last_name" type="text" name="s_last_name" value="{{ s_last_name }}">
+              <label for="s_order_date">Order Date:</label>
+              <input class="form-control" id="s_order_date" type="text" name="s_order_date" value="{{ s_order_date }}">
             </div>
           </div>    
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="s_phone">Phone:</label>
-              <input class="form-control" id="s_phone" type="text" name="s_phone" value="{{ s_phone }}">
+                <label for="s_client_id">Client:</label>
+                <select class="form-control" name="s_client_id" id="s_client_id">
+                    <option value=""></option>
+                    {% for client in clients %} 
+                    <option value="{{ client['id'] }}">{{ client['first_name'] }} {{ client['last_name'] }}</option>
+                    {% endfor %}
+                </select>
+                <script>$("#s_client_id").val({{ s_client_id }})</script>
             </div>
           </div> 
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label for="s_email">Email:</label>
-              <input class="form-control" id="s_email" type="text" name="s_email" value="{{ s_email }}">
-            </div>
-          </div>    
         </div>
         <div class="row">    
           <div class="col-sm-3">
@@ -64,22 +64,22 @@
             
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name </th>
-                <th>Phone</th>
-                <th>Email</th> 
+                <th>Number</th>
+                <th>Date</th>
+                <th>Client</th>
                 <th>Delete</th>
                 <th>Edit</th>
+                <th>Details</th>
             </tr>
-            {% for client in clients %} 
+            {% for order in orders %} 
             <tr>
-                <td>{{ client['id'] }}</td>
-                <td>{{ client['first_name'] }}</td>
-                <td>{{ client['last_name'] }}</td>
-                <td>{{ client['phone'] }}</td>
-                <td>{{ client['email'] }}</td>
-                <td><a  class="btn btn-primary btn-xs" href='clients.php?operation=delete&id={{ client['id'] }}'>delete</a></td>
-                <td><a class="btn btn-primary btn-xs" href='clients.php?operation=edit&id={{ client['id'] }}'>edit</a></td>
+                <td>{{ order['id'] }}</td>
+                <td>{{ order['order_number'] }}</td>
+                <td>{{ order['order_date'] }}</td>
+                <td>{{ order['client_name'] }}</td>
+                <td><a  class="btn btn-primary btn-xs" href='orders.php?operation=delete&id={{ order['id'] }}'>delete</a></td>
+                <td><a class="btn btn-primary btn-xs" href='orders.php?operation=edit&id={{ order['id'] }}'>edit</a></td>
+                <td><a class="btn btn-primary btn-xs" href='order-details.php?order_id={{ order['id'] }}'>details</a></td>
             </tr>
             {% endfor %}
         </table>
@@ -91,35 +91,33 @@
             <div class="row">    
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="first_name">First Name:</label>
-                        <input class="form-control" id="first_name" type="text" name="first_name" value="{{ first_name }}">
+                        <label for="order_number">Order Number:</label>
+                        <input class="form-control" id="order_number" type="text" name="order_number" value="{{ order_number }}">
                     </div>
                 </div>
             </div>    
             <div class="row">    
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="last_name">Last Name:</label>
-                        <input class="form-control" id="last_name" type="text" name="last_name" value="{{ last_name }}">
+                        <label for="order_date">Order Date:</label>
+                        <input class="form-control" id="order_date" type="text" name="order_date" value="{{ order_date }}">
                     </div>
                 </div>
             </div>    
              <div class="row">    
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="phone">Phone:</label>
-                        <input class="form-control" id="phone" type="text" name="phone" value="{{ phone }}">
+                        <label for="client_id">Client:</label>
+                        <select class="form-control" name="client_id" id="client_id">
+                            <option value=""></option>
+                            {% for client in clients %} 
+                            <option value="{{ client['id'] }}">{{ client['first_name'] }} {{ client['last_name'] }}</option>
+                            {% endfor %}
+                        </select>
+                        <script>$("#client_id").val({{ client_id }})</script>
                     </div>
                 </div>
             </div>          
-            <div class="row">    
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input class="form-control" id="email" type="text" name="email" value="{{ email }}">
-                    </div>
-                </div>
-            </div>                        
             <div class="row">    
                 <div class="col-sm-3">         
                     <input class="btn btn-primary" type="submit" name='save_btn' value="{{ btn_value }}">
@@ -127,7 +125,6 @@
             </div>    
             </div>
             </div>    
-        </div>
         </form>
     </body>
 </html>
