@@ -18,6 +18,20 @@ $quantity="";
 $price = "";
 $order_id = $_REQUEST['order_id'] ?? $_SESSION['order_id'] ?? 0;
 $_SESSION['order_id'] = $order_id;
+$data = [];
+
+function calculateOrderSum($mysqli,$order_id) {
+    $sql="select sum(product_sum) as order_sum from order_details\n";
+    $sql.="where order_id=%d\n";
+    $query=sprintf($sql,$order_id);
+    $result=$mysqli->query($query);
+    $sum=$result->fetch_assoc();
+    $sql="update orders set\n";
+    $sql.="order_sum=%f\n";
+    $sql.="where id=%d\n";
+    $query=sprintf($sql,$sum['order_sum'],$order_id);
+    $result=$mysqli->query($query);
+}
 
 if (isset($_REQUEST["save_btn"])){
     $is_valid = true;
@@ -54,7 +68,7 @@ if (isset($_REQUEST["save_btn"])){
             $sql.="values(%d,%d,%f,%f,%f)";
             $query=sprintf($sql,$order_id,$_REQUEST["product_id"],$_REQUEST["quantity"],$_REQUEST["price"],$_REQUEST["quantity"]*$_REQUEST["price"]);
             $result = $mysqli->query($query);
-
+            calculateOrderSum($mysqli,$order_id);
         }
         if ($_REQUEST["save_btn"]=="Update"){
             $edit_id=$_REQUEST["edit_id"];
@@ -66,6 +80,7 @@ if (isset($_REQUEST["save_btn"])){
             $sql.="where id=%d";
             $query=sprintf($sql,$_REQUEST["product_id"],$_REQUEST["quantity"],$_REQUEST["price"],$_REQUEST["quantity"]*$_REQUEST["price"],$edit_id);
             $result = $mysqli->query($query);
+            calculateOrderSum($mysqli,$order_id);
         }
     } else {
         $product_id = $_REQUEST["product_id"];
@@ -83,6 +98,7 @@ if ($operation=="delete"){
     $sql.="where id=%d";
     $query=sprintf($sql,$id);
     $result = $mysqli->query($query);
+    calculateOrderSum($mysqli,$order_id);
 }
 if ($operation=="edit"){
     $id=$_REQUEST["id"];
@@ -134,5 +150,14 @@ $data['quantity'] = $quantity;
 $data['price'] = $price;
 $data['btn_value'] = $btn_value;
 $data['errors'] = $errors;
-
+$sql="select * from orders,clients\n";
+$sql.= "where(orders.client_id=clients.id)\n";
+$sql.= "and(orders.id=%d)\n";
+$query=sprintf($sql, $order_id);
+$result = $mysqli->query($query);
+$order = $result->fetch_assoc();
+$data['order_number'] = $order['order_number'];
+$data['order_date'] = $order['order_date'];
+$data['order_sum'] = $order['order_sum'];
+$data['order_client_name'] = $order['first_name'] .' '.$order['last_name'];
 echo $twig->render('order-details-template.php', $data);
