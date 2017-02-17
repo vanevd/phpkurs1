@@ -19,11 +19,32 @@
                 <li class="active"><a href="order-details.php">Order detail</a></li>
             </ul>
             {% if order_id > 0 %}
+            
             <div class="panel panel-default">
                 <div class="panel-body">
         {% for error in errors %} 
             <font color="red">{{ error }}</font><br>
         {% endfor %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="myTable" border='1' cellpadding="10">
+            
+                    <tr>
+                        <th>ID</th>
+                        <th>Number</th>
+                        <th>Date</th>
+                        <th>Sum</th>
+                        <th>Client</th>
+                    </tr>
+                    <tr>
+                        <td>{{ order_id }}</td>
+                        <td>{{ order_number }}</td>
+                        <td>{{ order_date }}</td>
+                        <td>{{ order_sum }}</td>
+                        <td>{{ order_client_name }}</td>
+                </table>
+            </div>
+        </div>
             <div class="panel panel-default">
                 <div class="panel-body">
                
