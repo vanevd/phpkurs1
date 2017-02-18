@@ -174,7 +174,7 @@
     <br>
     <br>
    
-<a name="row1">  
+<a name="row1"/>  
     Row1 
 <table class="myTable1">
   <tr>
@@ -193,7 +193,7 @@
     <td>94</td>
   </tr>
 </table>    
-        
+     
         <table class="myTable">
             <tr>
                 <th>Име1</th>
