@@ -69,7 +69,8 @@
                 <th>Client</th>
                 <th>Delete</th>
                 <th>Edit</th>
-                <th>Details</th>
+                <th>Details 2
+                </th>
             </tr>
             {% for order in orders %} 
             <tr>
