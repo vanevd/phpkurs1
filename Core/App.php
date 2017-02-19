@@ -6,11 +6,14 @@ class App
     private $db;
     private $template;
     
-    public function init()
+    public function initDb($host, $user, $password, $db_name)
     {
-        $this->db = new \mysqli('127.0.0.1', 'root', '', 'test-php');
-
-        $loader = new \Twig_Loader_Filesystem('./templates');
+        $this->db = new \mysqli($host, $user, $password, $db_name);
+    }   
+    
+    public function initTemplate($dir)
+    {
+        $loader = new \Twig_Loader_Filesystem($dir);
         $this->template = new \Twig_Environment($loader);
     }   
     

@@ -7,7 +7,8 @@ use Core\App;
 use Controllers\ClientController;
 
 $app = new App;
-$app->init();
+$app->initDb('127.0.0.1', 'root', '', 'test-php');
+$app->initTemplate('templates');
 
 $clientController = new ClientController;
 $clientController->handle($app);

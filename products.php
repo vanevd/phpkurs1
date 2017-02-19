@@ -7,7 +7,8 @@ use Core\App;
 use Controllers\ProductController;
 
 $app = new App;
-$app->init();
+$app->initDb('127.0.0.1', 'root', '', 'test-php');
+$app->initTemplate('templates');
 
 $productController = new ProductController;
 $productController->handle($app);

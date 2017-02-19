@@ -46,9 +46,9 @@ class Client extends BaseModel
     
     public function store($request)
     {
-        $sql="insert into clients (first_name, last_name, phone, email)\n";
-        $sql.="values('%s','%s','%s','%s')";
-        $query=sprintf($sql,$request["first_name"],$request["last_name"],$request["phone"],$request["email"]);
+        $sql="insert into clients (first_name, last_name, phone, email, id)\n";
+        $sql.="values('%s','%s','%s','%s', %d)";
+        $query=sprintf($sql,$request["first_name"],$request["last_name"],$request["phone"],$request["email"],$request["id"] ?? null);
         $this->getDb()->query($query);
     }
     

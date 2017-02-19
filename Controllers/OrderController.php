@@ -103,8 +103,6 @@ $data['errors'] = $errors;
 
 
         echo $app->getTemplate()->render('orders-template.php', $data);
-		//Работи без това:
-		//echo $twig->render('orders-template.php', $data);
 
     }    
 }

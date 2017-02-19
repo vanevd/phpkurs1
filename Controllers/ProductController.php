@@ -32,6 +32,9 @@ class ProductController extends BaseController
             if (strlen($_REQUEST["price"]) == 0) {
                 $is_valid = false;
                 $errors[] = "Field price must have a value.";
+            } elseif (!is_numeric($_REQUEST["price"])) {
+                $is_valid = false;
+                $errors[] = "Field price must be numeric.";
             }
             if ($is_valid){
                 if ($_REQUEST["save_btn"]=="Save") {
@@ -46,7 +49,7 @@ class ProductController extends BaseController
             } else {
                 $product_name = $_REQUEST["product_name"];
                 $product_code = $_REQUEST["product_code"];
-                $phone = $_REQUEST["price"];
+                $price = $_REQUEST["price"];
             }
         }
         $operation="list";
