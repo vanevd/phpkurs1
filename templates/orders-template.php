@@ -24,10 +24,10 @@
             <font color="red">{{ error }}</font><br>
         {% endfor %}
         <div class="row">    
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <div class="form-group">
               <label for="s_order_number">Order Number:</label>
-              <input class="form-control" id="s_order_number" type="text" name="s_order_number" value="{{ s_order_number }}">
+              <input class="form-control " id="s_order_number" type="text" name="s_order_number" value="{{ s_order_number }}">
             </div>
           </div>    
           <div class="col-sm-3">

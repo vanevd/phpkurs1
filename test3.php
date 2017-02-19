@@ -53,11 +53,11 @@ $client3->firstName = 'Matia';
 $client3->lastName = 'Petrova';
 $client3->address = 'bul.Bulgaria 15';
 
-$a = [$client1, $client2, $client3];
+$a = [$client1, "eeee"=>$client2, $client3];
 
 
 //echo $client->name();
-
-var_dump($a);
+print_r($a['eeee']);
+//print_r($a);
 
 

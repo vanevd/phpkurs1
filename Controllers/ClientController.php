@@ -104,5 +104,6 @@ class ClientController extends BaseController
         $data['errors'] = $errors;
 
         echo $app->getTemplate()->render('clients-template.php', $data);
+		echo $twig->render('orders-template.php', $data);
     }    
 }
