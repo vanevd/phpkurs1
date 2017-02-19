@@ -4,11 +4,6 @@ require_once "Models/BaseModel.php";
 
 class Client extends BaseModel
 {
-    //private $search_fields=['first_name', 'last_name'];
-    //private $table = 'clients';
-    
-
-    
     public function index($request, $apply_search = false, $search_fields = [])
     {
         $sql="select * from clients\n";
@@ -49,6 +44,14 @@ class Client extends BaseModel
         return $result->fetch_assoc();
     }
     
+    public function store($request)
+    {
+        $sql="insert into clients (first_name, last_name, phone, email)\n";
+        $sql.="values('%s','%s','%s','%s')";
+        $query=sprintf($sql,$request["first_name"],$request["last_name"],$request["phone"],$request["email"]);
+        $this->getDb()->query($query);
+    }
+    
     public function update($id, $request)
     {
         $sql="update clients set\n";
@@ -59,14 +62,6 @@ class Client extends BaseModel
         $sql.="where id=%d";
         $query=sprintf($sql,$request["first_name"],$request["last_name"],$request["phone"],$request["email"],$id);
         $result = $this->getDb()->query($query);
-    }
-    
-    public function store($request)
-    {
-        $sql="insert into clients (first_name, last_name, phone, email)\n";
-        $sql.="values('%s','%s','%s','%s')";
-        $query=sprintf($sql,$request["first_name"],$request["last_name"],$request["phone"],$request["email"]);
-        $this->getDb()->query($query);
     }
     
     public function destroy($id) 

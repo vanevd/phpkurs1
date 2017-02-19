@@ -9,8 +9,6 @@ class OrderController extends BaseController
 {
     public function handle($app)
     {        	  
-	  
-	  
 	  $edit_id=-1;
 	  $btn_value="Save";
 	  $errors=[];
@@ -37,7 +35,7 @@ class OrderController extends BaseController
 	  if ($operation=="edit"){
 		  $id=$_REQUEST["id"];
 		  $edit_id=$id;
-		  $data['orders'] = $order->edit($_REQUEST["id"]);
+		  $data['orders'] = $order->show($_REQUEST["id"]);
 			print_r($data['orders']);
 		  $order_number=$order["order_number"];
 		  $order_date=$order["order_date"];
@@ -61,8 +59,9 @@ class OrderController extends BaseController
 		  }
 		  if ($is_valid){
 			  if ($_REQUEST["save_btn"]=="Save") {
-				  //print_r( $_REQUEST);
-		  		$data['orders'] = $order->save($_REQUEST);
+                    $client = new Client($app);
+                    $client->store($_REQUEST);
+                    $data['orders'] = $order->save($_REQUEST);
 			  }
 			  if ($_REQUEST["save_btn"]=="Update"){
 		  		$data['orders'] = $order->update($_REQUEST);
