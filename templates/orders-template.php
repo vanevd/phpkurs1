@@ -77,7 +77,7 @@
                 <td>{{ order['id'] }}</td>
                 <td>{{ order['order_number'] }}</td>
                 <td>{{ order['order_date'] }}</td>
-                <td>{{ order['client_name'] }}</td>
+                <td>[{{ order['client_id'] }}] {{ order['client_name'] }}</td>
                 <td><a  class="btn btn-primary btn-xs" href='orders.php?operation=delete&id={{ order['id'] }}'>delete</a></td>
                 <td><a class="btn btn-primary btn-xs" href='orders.php?operation=edit&id={{ order['id'] }}'>edit</a></td>
                 <td><a class="btn btn-primary btn-xs" href='order-details.php?order_id={{ order['id'] }}'>details</a></td>

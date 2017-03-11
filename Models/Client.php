@@ -71,5 +71,10 @@ class Client extends BaseModel
         $query=sprintf($sql,$id);
         $result = $this->getDb()->query($query);
     }
-    
+	
+	public function getClients() {
+		$clients = ($this->getDb()->query('select * from clients'));
+		return $clients->fetch_all(MYSQLI_ASSOC);
+	}	
+	   
 }
