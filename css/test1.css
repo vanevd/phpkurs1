@@ -1,0 +1,40 @@
+.menu {
+    width:200px;
+    height:100%;
+    border: 1px blue solid;
+    float:left;
+}
+
+.main-content {
+    width:600px;
+    height:100%;
+    border: 1px green solid;
+    float:left;
+}
+
+.side-bar {
+    width:200px;
+    height:100%;
+    border: 1px green solid;
+    float:left;
+}
+
+.hotel  {
+    width:169px;
+    height:auto;
+    border: 1px red solid;
+    background: #dddddd;
+    padding: 20 10;
+    margin-top: 5px;
+    margin-left: 5px;
+    float:left;
+}
+
+.hotel-row {
+    height:100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5;
+    border: 1px blue solid;
+    float:left;
+}
