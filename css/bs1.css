@@ -1,0 +1,48 @@
+ 
+ .my-box {
+     background: #aaaaaa;
+     color: green;
+     border-color: black;
+ }
+
+nav ul.dropdown-menu {
+    margin-top:1px !important;
+    opacity:0.8;
+    filter:alpha(opacity=80);
+    background-color:#111;
+    color:#fff !important;
+    border-top-right-radius: 3px !important; 
+    border-top-left-radius: 3px !important; 
+    margin:0;
+    border:0 !important;
+    padding-left:1px;    
+    padding-right:1px;    
+}
+
+nav ul.dropdown-menu li a {
+    color:#fff !important;
+}
+
+nav ul.dropdown-menu li a:hover {
+    background-color:#222 !important;
+    color:#fff !important;
+}
+
+.navbar-inverse .navbar-nav> li {
+    margin-left:20px;
+}
+
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus,
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+    background-color:#111;
+    border-radius: 4px !important;    
+    height:30px;
+    margin-top:10px;
+    line-height:30px;
+    padding-top:0;
+}
+
