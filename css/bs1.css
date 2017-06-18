@@ -46,3 +46,28 @@ nav ul.dropdown-menu li a:hover {
     padding-top:0;
 }
 
+.hotel-link:link {
+    color: green ;
+}
+
+.panel-body .hotel-link:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.media-body .hotel-link:hover {
+    color: red;
+    text-decoration: none;
+}
+
+.hotel-link:focus {
+    color: yellow;
+}
+
+/*a.hotel-link:active {
+    color: blue;
+}*/
+
+/*a.hotel-link:visited {
+    color: black;
+}*/
