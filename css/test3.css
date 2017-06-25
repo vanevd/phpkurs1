@@ -1,0 +1,56 @@
+
+table {
+   border: 2px solid black;
+   border-collapse: collapse;
+   margin-top: 20px;
+}
+
+th, td {
+   border: 1px solid black;
+   padding: 4px;
+}
+
+td {
+    color: #555;
+}
+
+th {
+   background: #999;
+}
+
+table.clients th {
+    background: yellow;
+}
+
+table.clients td {
+    background: #BBB;
+}
+
+table.products th {
+    background: cyan;
+}
+
+table.products td {
+    background: green;
+    color: white;
+}
+
+tr.active td {
+    color: red;
+}
+
+table.clients tr.active td {
+    color: yellow;
+}
+
+table.products tr.active td {
+    color: blue;
+}
+
+#active-td {
+    color: pink;
+}
+
+div.panel {
+    margin-top: 20px;
+}
