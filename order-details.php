@@ -8,7 +8,7 @@ $loader = new Twig_Loader_Filesystem('./templates');
 
 $twig = new Twig_Environment($loader);
 
-$mysqli = new mysqli('127.0.0.1', 'root', '', 'test-php');
+$mysqli = new mysqli('127.0.0.1', 'testphp', 'testphp', 'testphp');
 
 $edit_id=-1;
 $btn_value="Save";
