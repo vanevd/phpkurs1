@@ -18,7 +18,7 @@
                 <li><a href="orders.php">Orders</a></li>
                 <li><a href="order-details.php">Order detail</a></li>
             </ul>
-            <div class="panel panel-default">
+            <div class="panel panel-default top-panel" style="margin-top: 20px;">
                 <div class="panel-body">
         {% for error in errors %} 
             <font color="red">{{ error }}</font><br>
