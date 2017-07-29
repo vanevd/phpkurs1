@@ -1,28 +1,32 @@
 .my-container {
-    width:auto;
+    width:800px;
+    text-align: center;
+    background-color: yellow;
+    float:left;
 }
 
 .my-tabs {
-    list-style-type: none;
-    width: 100%;
+    list-style: none;
+    width: 760px;
     float:left;
+    border-bottom: 1px solid #aaa;
+    box-sizing: border-box;
 }
 
 .my-tab-item {
     float: left;
-    min-height: 20px;
-    border-bottom: 1px solid #aaa; 
+    border: 1px solid transparent;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     cursor: pointer;
     padding: 10px;
+    margin-bottom: -1px;
+    box-sizing: border-box;
 }
 
 .active {
-    border-top: 1px solid #aaa;
-    border-left: 1px solid #aaa;
-    border-right: 1px solid #aaa;
-    border-bottom: none;
+    border: 1px solid #aaa;
+    border-bottom: 1px solid transparent;
     cursor: default;
 }
 
@@ -30,6 +34,7 @@ li.my-tab-item a {
     cursor:pointer;
     text-decoration: none;
     color: #0000ff;
+    position: relative;
 }
 
 li.active a {
@@ -50,11 +55,7 @@ li.active a:hover {
 }
 
 .active:hover {
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
-li.system {
-    width: 200px;
-    border-bottom: 1px solid #aaa;
-}
 
