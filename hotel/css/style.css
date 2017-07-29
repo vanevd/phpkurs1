@@ -1,3 +1,79 @@
-.panel-info .panel-body {
-    background-color: #f2f2f2;
+.panel-hotels {
+  border-color: #bce8f1;
 }
+.panel-hotels > .panel-heading {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  font-weight: bold;
+  font-size: large;
+}
+.panel-hotels > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #bce8f1;
+}
+.panel-hotels > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+.panel-hotels > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #bce8f1;
+}
+
+.panel-hotel {
+  border-color: #bce8f1;
+  width: 400px;
+  float: left;
+  margin-left:10px;
+}
+.panel-hotel > .panel-heading {
+  color: #31708f;
+  background-color: lightgreen;
+  border-color: #bce8f1;
+}
+.panel-hotel > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #bce8f1;
+}
+.panel-hotel > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+.panel-hotel > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #bce8f1;
+}
+
+.panel-form {
+  border-color: #bce8f1;
+}
+.panel-form > .panel-heading {
+  color: #31708f;
+  background-color:lightpink;
+  border-color: #bce8f1;
+  font-weight: bold;
+  font-size: large;
+}
+.panel-form > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #bce8f1;
+}
+.panel-form > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+.panel-form > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #bce8f1;
+}
+
+.hotel-pic {
+    float: left;
+}
+.hotel-info {
+    float: left;
+    margin-left: 10px;
+}
+
+.hotel-pic > img {
+    width:150px;
+    height:100px;
+    margin-left: 7px;
+}
+
+
