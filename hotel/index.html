@@ -147,11 +147,12 @@
                             </div>    
                         </div>  
                         <div class="row">    
-                            <div class="col-sm-12">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </div>    
+                             <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                 </div>    
+                             </div>   
                         </div>  
-
                     </div>
                 </div>     
             </div>  
@@ -161,80 +162,7 @@
                         50 Hotels found
                     </div>    
                     <div class="panel-body">
-                        <div class="row"> 
-                                <div class="panel panel-hotel">
-                                    <div class="panel-heading">
-                                        <a href="hotel.html">Grand Hotel</a>
-                                    </div>    
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="hotel-pic">
-                                                <img src="image/hotel.jpg">
-                                            </div>    
-                                            <div class="hotel-info">
-                                                City: Bansko<br>
-                                                Address: 15 Pirin str.<br>
-                                                Tel: +359 888 555 444<br>
-                                                Email: grandhotel@abv.bg<br>
-                                            </div>    
-                                        </div>
-                                    </div>    
-                                </div>       
-                                <div class="panel panel-hotel">
-                                    <div class="panel-heading">
-                                        Novotel
-                                    </div>    
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="hotel-pic">
-                                                <img src="image/hotel1.jpg">
-                                            </div>    
-                                            <div class="hotel-info">
-                                                City: Bansko<br>
-                                                Address: 15 Pirin str.<br>
-                                                Tel: +359 888 555 444<br>
-                                                Email: grandhotel@abv.bg<br>
-                                            </div>    
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div class="panel panel-hotel">
-                                    <div class="panel-heading">
-                                        Borovetz
-                                    </div>    
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="hotel-pic">
-                                                <img src="image/hotel2.jpg">
-                                            </div>    
-                                            <div class="hotel-info">
-                                                City: Bansko<br>
-                                                Address: 15 Pirin str.<br>
-                                                Tel: +359 888 555 444<br>
-                                                Email: grandhotel@abv.bg<br>
-                                            </div>    
-                                        </div>
-                                    </div>    
-                                </div>       
-                                <div class="panel panel-hotel">
-                                    <div class="panel-heading">
-                                        Rila
-                                    </div>    
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="hotel-pic">
-                                                <img src="image/hotel3.jpg">
-                                            </div>    
-                                            <div class="hotel-info">
-                                                City: Bansko<br>
-                                                Address: 15 Pirin str.<br>
-                                                Tel: +359 888 555 444<br>
-                                                Email: grandhotel@abv.bg<br>
-                                            </div>    
-                                        </div>
-                                    </div>    
-                                </div>       
-                            </div>    
+                        <div class="row" id="hotels"> 
                         </div>            
                     </div>   
                 </div>
@@ -242,6 +170,28 @@
         </div>
         </form>
     </div>      
-    
+
+
+<div id="hotel-template" style="display: none">
+    <div class="panel panel-hotel" data-hotel-id="{hotel-id}">
+        <div class="panel-heading">
+            <a href="hotel.html" data="hotel-name"></a>
+        </div>    
+        <div class="panel-body">
+            <div class="row">
+                <div class="hotel-pic">
+                    <img data="hotel-pic" src="">
+                </div>    
+                <div class="hotel-info">
+                    City: <span data="city"></span><br>
+                    Address: <span data="address"></span><br>
+                    Tel: <span data="tel"></span><br>
+                    Email: <span data="email"></span><br>
+                </div>    
+            </div>
+        </div>    
+    </div>    
+</div>
+
 </body>
 </html>    

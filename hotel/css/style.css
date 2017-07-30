@@ -1,3 +1,7 @@
+body {
+  overflow-y: scroll;  
+}
+
 .panel-hotels {
   border-color: #bce8f1;
 }
