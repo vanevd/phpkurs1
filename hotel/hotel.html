@@ -6,7 +6,7 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/hotel.js"></script>
 </head>
 <body bgcolor="#E6E6FA">    
     <div class="container">
@@ -156,86 +156,76 @@
                 </div>     
             </div>  
             <div class="col-sm-9">
-                  <div class="row"> 
-                     <div class="col-sm-12">
-                        <div class="panel panel-hotel-details">
-                            <div class="panel-heading">
-                                Grand Hotel
-                            </div>    
-                            <div class="panel-body">
-                                <div class="hotel-pic">
-                                    <img src="image/hotel.jpg">
-                                </div>    
-                                <div class="hotel-info">
-                                    City: Bansko<br>
-                                    Address: 15 Pirin str.<br>
-                                    Tel: +359 888 555 444<br>
-                                    Email: grandhotel@abv.bg<br>
-                                </div>    
-                             </div>   
-                        </div>            
-                        <div class="row"> 
-                            <div class="col-sm-12">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        Description
-                                    </div>
-                                    <div class="panel-body">
-                                        The hotel Arbor Hyde Park is quietly situated at a square of
-                                        Lancaster Gate, overlooking the magnificent Hyde Park.
-                                        The famous Oxford Street as well as Kensington Gardens,
-                                        Knightsbridge and Buckingham Palace are reachable on foot.
-                                        Thanks to the underground station Lancaster Gate near the 
-                                        Arbor Hyde Park, many other sights and attractions of the city are easily accessible
-                                    </div>    
-                                </div>    
-                            </div>    
+                <div class="panel panel-hotel-details">
+                    <div class="panel-heading">
+                        Grand Hotel
+                    </div>    
+                    <div class="panel-body">
+                        <div class="hotel-pic">
+                            <img src="image/hotel.jpg">
                         </div>    
-                        <div class="row"> 
-                            <div class="col-sm-12">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading hotel">
-                                        Prices
-                                    </div>
-                                    <div class="panel-body">          
-                                        <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Hotels</th>
-                                            <th>Date</th>
-                                            <th>Price</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Bansko</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
-                                        </table>
-                                    </div>   
-                                </div>    
-                            </div>    
+                        <div class="hotel-info">
+                            City: Bansko<br>
+                            Address: 15 Pirin str.<br>
+                            Tel: +359 888 555 444<br>
+                            Email: grandhotel@abv.bg<br>
                         </div>    
+                        </div>  
+                </div>    
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Description
+                    </div>
+                    <div class="panel-body">
+                        The hotel Arbor Hyde Park is quietly situated at a square of
+                        Lancaster Gate, overlooking the magnificent Hyde Park.
+                        The famous Oxford Street as well as Kensington Gardens,
+                        Knightsbridge and Buckingham Palace are reachable on foot.
+                        Thanks to the underground station Lancaster Gate near the 
+                        Arbor Hyde Park, many other sights and attractions of the city are easily accessible
+                    </div>    
+                </div>    
+                <div class="panel panel-info">
+                    <div class="panel-heading hotel">
+                        Prices
+                    </div>
+                    <div class="panel-body">          
+                        <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Rooms</th>
+                            <th>01.01 - 31.05</th>
+                            <th>01.06 - 30.09</th>
+                            <th>01.10 - 31.12</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Single room</td>
+                            <td>50</td>
+                            <td>70</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>Double room</td>
+                            <td>60</td>
+                            <td>80</td>
+                            <td>70</td>
+                        </tr>
+                        <tr>
+                            <td>Appartement</td>
+                            <td>100</td>
+                            <td>120</td>
+                            <td>110</td>
+                        </tr>
+                        </tbody>
+                        </table>
                     </div>   
-                </div>
+                </div>    
             </div>
         </div>
         </form>
     </div>      
     
-$('.hotel').hide();
-
 </body>
 </html>    

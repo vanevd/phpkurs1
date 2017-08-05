@@ -54,6 +54,42 @@ $hotels = [
         "adress" => "15 Bulgaria Str",
         "tel" => "+359 878 150 111",
         "email" => "hotel@abv.bg",
+    ],
+    [
+        "id" => 7,
+        "name" => "Rila",
+        "pic" => "image/hotel3.jpg",
+        "city" => "Pamporovo",
+        "adress" => "15 Bulgaria Str",
+        "tel" => "+359 878 150 111",
+        "email" => "hotel@abv.bg",
+    ],
+    [
+        "id" => 8,
+        "name" => "Rila",
+        "pic" => "image/hotel3.jpg",
+        "city" => "Pamporovo",
+        "adress" => "15 Bulgaria Str",
+        "tel" => "+359 878 150 111",
+        "email" => "hotel@abv.bg",
+    ],
+    [
+        "id" => 9,
+        "name" => "Rila",
+        "pic" => "image/hotel3.jpg",
+        "city" => "Pamporovo",
+        "adress" => "15 Bulgaria Str",
+        "tel" => "+359 878 150 111",
+        "email" => "hotel@abv.bg",
+    ],
+    [
+        "id" => 10,
+        "name" => "Rila",
+        "pic" => "image/hotel3.jpg",
+        "city" => "Pamporovo",
+        "adress" => "15 Bulgaria Str",
+        "tel" => "+359 878 150 111",
+        "email" => "hotel@abv.bg",
     ]
 ];
 

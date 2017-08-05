@@ -104,4 +104,6 @@ body {
     height:200px;
 }
 
-
+thead th {
+  background-color: #eeeeee;
+}
