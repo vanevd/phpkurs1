@@ -170,17 +170,17 @@
             <div class="col-sm-9" id="hotel-details" style="display: none">
                 <div class="panel panel-hotel-details">
                     <div class="panel-heading">
-                        <a href="#" onclick="showHotels()">back</a> > Grand Hotel
+                        <a href="#" onclick="showHotels()">back</a> > <span data="hotel-name"></span>
                     </div>    
                     <div class="panel-body">
                         <div class="hotel-pic">
-                            <img src="image/hotel.jpg">
+                            <img data="hotel-pic" src="">
                         </div>    
                         <div class="hotel-info">
-                            City: Bansko<br>
-                            Address: 15 Pirin str.<br>
-                            Tel: +359 888 555 444<br>
-                            Email: grandhotel@abv.bg<br>
+                            City: <span data="city"></span><br>
+                            Address: <span data="address"></span><br>
+                            Tel: <span data="tel"></span><br>
+                            Email: <span data="email"></span><br>
                         </div>    
                         </div>  
                 </div>    
@@ -189,12 +189,8 @@
                         Description
                     </div>
                     <div class="panel-body">
-                        The hotel Arbor Hyde Park is quietly situated at a square of
-                        Lancaster Gate, overlooking the magnificent Hyde Park.
-                        The famous Oxford Street as well as Kensington Gardens,
-                        Knightsbridge and Buckingham Palace are reachable on foot.
-                        Thanks to the underground station Lancaster Gate near the 
-                        Arbor Hyde Park, many other sights and attractions of the city are easily accessible
+                        <span data="hotel-description">
+                        </span>
                     </div>    
                 </div>    
                 <div class="panel panel-info">
@@ -202,37 +198,13 @@
                         Prices
                     </div>
                     <div class="panel-body">          
-                        <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Rooms</th>
-                            <th>01.01 - 31.05</th>
-                            <th>01.06 - 30.09</th>
-                            <th>01.10 - 31.12</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Single room</td>
-                            <td>50</td>
-                            <td>70</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>Double room</td>
-                            <td>60</td>
-                            <td>80</td>
-                            <td>70</td>
-                        </tr>
-                        <tr>
-                            <td>Appartement</td>
-                            <td>100</td>
-                            <td>120</td>
-                            <td>110</td>
-                        </tr>
-                        </tbody>
+                        <table class="table table-bordered" data="prices">
                         </table>
                     </div>   
+                </div>    
+            </div>
+            <div class="col-sm-9" id="error-details" style="display: none">
+                <div class="alert alert-danger">
                 </div>    
             </div>
         </div>
@@ -241,7 +213,7 @@
 
 
 <div id="hotel-template" style="display: none">
-    <div class="panel panel-hotel" data-hotel-id="{hotel-id}">
+    <div class="panel panel-hotel" data-hotel-id="{hotel-id}" data-hotel-key="">
         <div class="panel-heading">
             <a href="#" data="hotel-name"></a>
         </div>    
