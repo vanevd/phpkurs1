@@ -6,7 +6,10 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/hotel_search.js"></script>
+  <script src="js/hotel_list.js"></script>
+  <script src="js/hotel_details.js"></script>
 </head>
 <body bgcolor="#E6E6FA">    
     <div class="container">
@@ -28,210 +31,15 @@
         </div>
         </nav>          
         <div class="row">
-            <div class="col-sm-3">
-                <div class="panel panel-form">
-                    <div class="panel-heading">
-                        Where?
-                    </div>    
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="check_in">Check in:</label>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <input type="text" name="check_in" id="check_in" class="form-control">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>                                    
-                                </div>    
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="check_out">Check out:</label>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <input type="text" name="check_out" id="check_out" class="form-control">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>                                    
-                                </div>    
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group"> 
-                                    <label for="rooms_for">Rooms for :</label>
-                                    <input class="form-control" type="text" name="rooms_for" value="" id="rooms_for">
-                                </div>    
-                            </div>
-                        </div>    
-                        <div class="row">    
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="first_name">First Name:</label>
-                                    <input class="form-control" type="text" name="first_name" value="" id="first_name">
-                                </div>    
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="last_name">Last Name:</label>
-                                    <input class="form-control" type="text" name="last_name" value="" id="last_name">
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="row">    
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="hidden" name="not_specific_dates" value="0">
-                                    <input type="checkbox" name="not_specific_dates" value="1" id="not_specific_dates">
-                                    <label for="not_specific_dates">
-                                        I dont have specific date yet
-                                    </label>
-                                </div>            
-                            </div>    
-                        </div>  
-                        <div class="row">    
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <a href="#" class="more_options_link"><span class="caret"></span> More search options</a>
-                                </div>    
-                            </div>
-                        </div>        
-                        <div class="more_options">
-                        <div class="row">    
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="hidden" name="room_for_nosmokers" value="0">
-                                    <input type="checkbox" name="room_for_nosmokers" value="1" id="room_for_nosmokers">
-                                    <label for="room_for_nosmokers">
-                                        room for nosmokers
-                                    </label>
-                                </div>   
-                            </div>    
-                        </div>  
-                        <div class="row">    
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="hidden" name="with_free_parking" value="0">
-                                    <input type="checkbox" name="with_free_parking" value="1" id="with_free_parking">
-                                    <label for="with_free_parking">
-                                        with free parking
-                                    </label>
-                                </div>      
-                            </div>    
-                        </div>
-                        </div>  
-                        <div class="row">    
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="radio" name="pay_method" value="1" id="pay_cash">
-                                    <label for="pay_cash">
-                                        pay cash
-                                    </label>
-                                </div>            
-                            </div>    
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="radio" name="pay_method" value="2" checked id="pay_card">
-                                    <label for="pay_card">
-                                        pay card
-                                    </label>
-                                </div>            
-                            </div>    
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="radio" name="pay_method" value="3" id="pay_check">
-                                    <label for="pay_check">
-                                        pay check
-                                    </label>
-                                </div>            
-                            </div>    
-                        </div>  
-                        <div class="row">    
-                             <div class="col-sm-12">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" onclick="loadHotels()" >Search</button>
-                                 </div>    
-                             </div>   
-                        </div>  
-                    </div>
-                </div>     
+            <div class="col-sm-3" id="left-form">
             </div>  
-            <div class="col-sm-9" id="hotel-list">
-                <div class="panel panel-hotels">
-                    <div class="panel-heading">
-                        50 Hotels found
-                    </div>    
-                    <div class="panel-body">
-                        <div class="row" id="hotels"> 
-                        </div>            
-                    </div>   
-                </div>
-            </div>
-            <div class="col-sm-9" id="hotel-details" style="display: none">
-                <div class="panel panel-hotel-details">
-                    <div class="panel-heading">
-                        <a href="#" onclick="showHotels()">back</a> > <span data="hotel-name"></span>
-                    </div>    
-                    <div class="panel-body">
-                        <div class="hotel-pic">
-                            <img data="hotel-pic" src="">
-                        </div>    
-                        <div class="hotel-info">
-                            City: <span data="city"></span><br>
-                            Address: <span data="address"></span><br>
-                            Tel: <span data="tel"></span><br>
-                            Email: <span data="email"></span><br>
-                        </div>    
-                        </div>  
-                </div>    
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        Description
-                    </div>
-                    <div class="panel-body">
-                        <span data="hotel-description">
-                        </span>
-                    </div>    
-                </div>    
-                <div class="panel panel-info">
-                    <div class="panel-heading hotel">
-                        Prices
-                    </div>
-                    <div class="panel-body">          
-                        <table class="table table-bordered" data="prices">
-                        </table>
-                    </div>   
-                </div>    
-            </div>
-            <div class="col-sm-9" id="error-details" style="display: none">
-                <div class="alert alert-danger">
-                </div>    
+            <div class="col-sm-9" id="main-form">
             </div>
         </div>
         </form>
     </div>      
 
 
-<div id="hotel-template" style="display: none">
-    <div class="panel panel-hotel" data-hotel-id="{hotel-id}" data-hotel-key="">
-        <div class="panel-heading">
-            <a href="#" data="hotel-name"></a>
-        </div>    
-        <div class="panel-body">
-            <div class="row">
-                <div class="hotel-pic">
-                    <img data="hotel-pic" src="">
-                </div>    
-                <div class="hotel-info">
-                    City: <span data="city"></span><br>
-                    Address: <span data="address"></span><br>
-                    Tel: <span data="tel"></span><br>
-                    Email: <span data="email"></span><br>
-                </div>    
-            </div>
-        </div>    
-    </div>    
-</div>
 
 </body>
 </html>    
