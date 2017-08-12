@@ -104,3 +104,5 @@ $template = str_replace('{email}', $email, $template);
 $template = str_replace('{btn_value}', $btn_value, $template);
       
 echo $template;
+
+
