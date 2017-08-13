@@ -1,24 +1,17 @@
 function loadHotel() {
     var key;
     key = $(this).closest('.panel').attr('data-hotel-key');
-    $('#hotel-details [data="hotel-name"]').html(hotels[key].name);
-    $('#hotel-details [data="hotel-pic"]').attr('src', hotels[key].pic);
-    $('#hotel-details [data="city"]').html(hotels[key].city);
-    $('#hotel-details [data="address"]').html(hotels[key].address);
-    $('#hotel-details [data="tel"]').html(hotels[key].tel);
-    $('#hotel-details [data="email"]').html(hotels[key].email);
-    $('#hotel-details [data="hotel-description"]').html(hotels[key].description);
-    $('#hotel-details [data="prices"]').html(renderPrices(hotels[key].rooms));
+    current_hotel_id = hotels[key].id;
+    $('#main-form').html(templates.hotel_details);
+    $('[data="hotel-name"]').html(hotels[key].name);
+    $('[data="hotel-pic"]').attr('src', hotels[key].pic);
+    $('[data="city"]').html(hotels[key].city);
+    $('[data="address"]').html(hotels[key].address);
+    $('[data="tel"]').html(hotels[key].tel);
+    $('[data="email"]').html(hotels[key].email);
+    $('[data="hotel-description"]').html(hotels[key].description);
+    $('[data="prices"]').html(renderPrices(hotels[key].rooms));
 
-    $('#hotel-list').hide();
-    $('#error-details').hide();
-    $('#hotel-details').show();
-}
-
-function showHotels() {
-    $('#hotel-details').hide();
-    $('#error-details').hide();
-    $('#hotel-list').show();
 }
 
 function renderPrices(rooms) {
