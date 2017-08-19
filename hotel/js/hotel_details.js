@@ -1,17 +1,6 @@
 function loadHotel() {
-    var key;
-    key = $(this).closest('.panel').attr('data-hotel-key');
-    hotel_key = key;
-    $('#main-form').html(templates.hotel_details);
-    $('[data="hotel-name"]').html(hotels[key].name);
-    $('[data="hotel-pic"]').attr('src', hotels[key].pic);
-    $('[data="city"]').html(hotels[key].city);
-    $('[data="address"]').html(hotels[key].address);
-    $('[data="tel"]').html(hotels[key].tel);
-    $('[data="email"]').html(hotels[key].email);
-    $('[data="hotel-description"]').html(hotels[key].description);
-    $('[data="prices"]').html(renderPrices(hotels[key].rooms));
-
+    hotel_key = $(this).closest('.panel').attr('data-hotel-key');
+    showHotelDetails();
 }
 
 function renderPrices(rooms) {
