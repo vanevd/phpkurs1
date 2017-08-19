@@ -3,7 +3,7 @@ var hotels = [];
 var templates = {
     error_details: '<div class="alert alert-danger"></div>'
 };
-var current_hotel_id = 0;
+var hotel_key;
 
 $(function() {
 
@@ -44,6 +44,13 @@ function showLogin() {
 
 function showEditHotel() {
     $('#main-form').html(templates.hotel_edit);
+    $('#name').val(hotels[hotel_key].name);
+    $('#city').val(hotels[hotel_key].city);
+    $('#address').val(hotels[hotel_key].address);
+    $('#tel').val(hotels[hotel_key].tel);
+    $('#email').val(hotels[hotel_key].email);
+    $('#description').val(hotels[hotel_key].description);
+    $('#pic').val(hotels[hotel_key].pic);
 }
 
 function login() {

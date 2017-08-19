@@ -1,7 +1,7 @@
 function loadHotel() {
     var key;
     key = $(this).closest('.panel').attr('data-hotel-key');
-    current_hotel_id = hotels[key].id;
+    hotel_key = key;
     $('#main-form').html(templates.hotel_details);
     $('[data="hotel-name"]').html(hotels[key].name);
     $('[data="hotel-pic"]').attr('src', hotels[key].pic);
