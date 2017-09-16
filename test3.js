@@ -243,6 +243,24 @@ Queue.prototype.pop = function() {
     return res;
 }
 
+Queue.prototype.list = function() {
+    var client =  null;
+    client = this.first;
+    while (client) {
+        console.log(client.name);
+        client = client.next;
+    }    
+}
+
+Queue.prototype.list_reverse = function() {
+    var client =  null;
+    client = this.last;
+    while (client) {
+        console.log(client.name);
+        client = client.prev;
+    }    
+}
+
 function Stack() {
     this.first = null;
     this.last = null;
@@ -322,15 +340,37 @@ q.push(new Person("Irina"));
 q.push(new Person("Petya"));
 q.push(new Person("Maria"));
 
-/*
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-console.log(q.pop());
-*/
+q.list();
+console.log('--------1');
+q.list_reverse();
+console.log('--------2');
+
+a = [];
+a.push(new Person("Ivan"));
+a.push(new Person("Dimitar"));
+a.push(new Person("Petar"));
+a.push(new Person("Todor"));
+a.push(new Person("Blagovest"));
+a.push(new Person("Irina"));
+a.push(new Person("Petya"));
+a.push(new Person("Maria"));
+
+for (i=0; i<a.length; i++) {
+    switch (a[i].name) {
+        case 'Irina':
+            console.log('hidden');
+            break;
+        case 'Petya':
+            console.log('Georgieedee');
+            break;
+        default:    
+            console.log(a[i].name);
+    }        
+}
+console.log('--------3');
+
+for (i=0; i<a.length; i++) {
+    if (i==3) continue;
+    console.log(a[i].name);
+}
+
