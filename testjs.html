@@ -4,7 +4,51 @@
 <link rel="stylesheet" href="css/testjs.css">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="test4.js"></script>
+<script>
+    $(function() {
+        toggle();
+        
+    });         
+    function add_client() {
+        var row='<tr class="client" id="row'+$("#id").val()+'"><td>'+$("#first_name").val()+'</td>';
+        row += '<td>'+$("#last_name").val()+'</td>';
+        row += '<td>'+$("#email").val()+'</td></tr>';
+        $("#clients").append(row);
+    }
+    function change() {
+        $("#main").append($("#change").val());
 
+    }
+    function change2(){
+        var buffer=$("#main").html();
+        $("#main").html($("#slave").html());
+        $("#slave").html(buffer);
+    }
+    function hide(){
+        $("#main").hide();
+        $("#slave").hide();
+    }
+    function show(){
+        $("#main").show();
+        $("#slave").show();
+    }
+    function toggle(){
+        $("#main").toggle();
+        $("#slave").toggle();
+        if ($("#main").is(":visible")){
+            $("#toggle").val("hide");
+        } else {
+            $("#toggle").val("show");
+        }
+    }
+    function remove() {
+        $("#row"+$("#remove").val()).remove();
+    }
+    function edit() {
+        $("#edit").toggle();
+
+    }
+</script>
 </head>
 <body>
     <div id="main" class="panel-hotels" name="main" client="Ivan">
@@ -28,18 +72,64 @@ klhhkdddd
                 <th>Last name</th>
                 <th>Email</th>
             </tr>
-            <tr class="client">
+            <tr class="client" id="row1">
                 <td class="client">Ivan</td>
                 <td class="client">Ivanov</td>
                 <td data-email="1">ivan@abv.bg</td>
             </tr>
-            <tr class="client">
+            <tr class="client" id="row2">
                 <td>Petar</td>
                 <td>Petrov</td>
                 <td>petar@abv.bg</td>
             </tr>
+            <tr class="client" id="row3">
+                <td>Dimitar</td>
+                <td>Petrov</td>
+                <td>petar@abv.bg</td>
+            </tr>
+            <tr class="client" id="row4">
+                <td>Vasil</td>
+                <td>Petrov</td>
+                <td>petar@abv.bg</td>
+            </tr>
+            <tr class="client" id="row5">
+                <td>Todor</td>
+                <td>Petrov</td>
+                <td>petar@abv.bg</td>
+            </tr>
         </table>
-    <div>    
+    <div>  
+        <br><br>
+        <input type="button" value="edit" onclick="edit()"><br>
+        <br>
+        <div id="edit" style="display:none">
+            ID <input type="text" id="id"><br>
+            <br>
+            First Name <input type="text" id="first_name"><br>
+            <br>
+            Last Name <input type="text" id="last_name"><br>
+            <br>
+            Email <input type="text" id="email"><br>
+            <br>
+            <input type="button" value="Add" onclick="add_client()">
+            <br><br>
+            Change <input type="text" id="change"><br><br>
+            <input type="button" value="Change" onclick="change()">
+            <br><br>
+            <input type="button" value="Change2" onclick="change2()">
+            <br><br>
+            <input type="button" value="hide" onclick="hide()">
+            <br><br>
+            <input type="button" value="show" onclick="show()">
+            <br><br>
+            <input type="button" id="toggle" onclick="toggle()">
+            <br><br>
+            <input type="text" id="remove">
+            <br><br>
+            <input type="button" value="remove" onclick="remove()">
+        </div>
+
+
 
  </body>       
 
