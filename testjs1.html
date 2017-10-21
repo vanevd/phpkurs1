@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script>
+            var c=8;
+            function sum1(a,b){
+                var c=a+b;
+                console.log(c);
+            }
+            function sum(){
+                var c=$("#field1").val();
+                var d=$("#field2").val();
+                var a=parseInt(c) + parseInt(d);
+                $("#result").val(a);
+                console.log (a);
+            }
+        </script>
+    </head>
+    <body>
+        Field1
+        <input type="text" value="" id="field1"><br><br>
+        Field2
+        <input type="text" value="" id="field2"><br><br>
+        Result
+        <input type="text" value="" id="result"><br><br>
+        <input type="button" value="sum" onclick="sum()">
+        
+    </body>
+</html>
