@@ -1,0 +1,12 @@
+
+    .sum_form {
+        display: none;
+        border: 1px solid blue;
+        width: 230px;
+        padding: 10px;
+
+    }
+    
+    .field_row {
+        margin-top: 10px;
+    }
