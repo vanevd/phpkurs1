@@ -6,13 +6,30 @@
     </head>
     <body>
         <div id="sum_form" class="sum_form">
+            <form method="POST" action="testjs1.php"> 
             <div class="field_row">
                 Field1
-                <input type="text" value="" id="field1">
+                <input type="text" name="field" value="">
             </div>
             <div class="field_row">
                 Field2
-                <input type="text" value="" id="field2">
+                <input type="text" name="field" value="">
+            </div>
+            <div class="field_row">
+                Field3
+                <input type="text" name="field" value="">
+            </div>
+            <div class="field_row">
+                Field4
+                <input type="text" name="field" value="">
+            </div>
+            <div class="field_row">
+                Field5
+                <input type="text" name="field" value="">
+            </div>
+            <div class="field_row">
+                Field6
+                <input type="text" name="field" value="">
             </div>
             <div class="field_row">
                 Result
@@ -21,6 +38,13 @@
             <div class="field_row">
                 <input type="button" value="sum" id="sum_button">
             </div>
+            <div class="field_row">
+                <input type="button" value="sum_ajax" id="sum_ajax_button">
+            </div>
+            <div class="field_row">
+                <input type="submit" value="sum php">
+            </div>
+            </form>
         </div>
         <div class="field_row">
         <input type="button" value="hide" id="hide_button">
