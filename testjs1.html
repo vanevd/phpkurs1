@@ -7,6 +7,14 @@
     <body>
         <div id="sum_form" class="sum_form">
             <div id="fields">
+                <div class="field_row">
+                    <div class="label">Set</div>
+                    <select id="set">
+                        <option value=""></option>
+                        <option value="0">Set 1</option>
+                        <option value="1">Set 2</option>
+                    </select>    
+                </div>
                 <div class="field_row" data-num="1">
                     <div class="label">Field 1</div>
                     <input type="text" name="field" value="">
@@ -46,6 +54,13 @@
             </div>
             <div class="field_row">
                 <input type="button" value="clear fields" id="clear_fields">
+            </div>
+            <div class="field_row">
+                <div class="label">Set Name</div>
+                <input type="text" id="set_name" value="">
+            </div>
+            <div class="field_row">
+                <input type="button" value="save set" id="save_set">
             </div>
             <div class="field_row">
                 Result

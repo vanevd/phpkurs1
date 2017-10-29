@@ -1,3 +1,16 @@
+var sets = [];
+
+set = {
+    name: 'Set 1',
+    fields: [10,15,20,30,40]
+}
+sets.push(set);
+set = {
+    name: 'Set 2',
+    fields: [11,22,33,43,50,60]
+}
+sets.push(set);
+
     function sum(){
         var s = 0;
         var n = 1;
@@ -62,14 +75,16 @@
 
     }
 
-    function add_field() {
+    function add_field(value) {
+        if (typeof value != 'number') {
+            value = '';
+        }
         var s = '';
         var n = $('[name=field]').length + 1;
         s += '<div class="field_row" data-num="' + n +'">';
-        s += '<div  class="label">Field ' + n + '</div><input type="text" name="field" value="">';
+        s += '<div  class="label">Field ' + n + '</div><input type="text" name="field" value="'+value+'">';
         s += ' <input type="button" value="x" class="delete_row">';
         s += '</div>';
-        console.log(s);
         $('#fields').append(s);
         $(".delete_row:last").click(function () {
             $(this).closest('.field_row').remove();
@@ -104,10 +119,31 @@
         });
     }
 
+    function save_set() {
+        var fields = [];
+        $("[name=field]").each(function() {
+            fields.push($(this).val());
+        });
+        var set = {
+            name: $('#set_name').val(),
+            fields: fields
+        }
+        sets.push(set);
+    }
+
+    function load_set(id) {
+        $('#set_name').val(sets[id].name);
+        $('#fields').html('');
+        for (key=0; key < sets[id].fields.length; key++) {
+            add_field(sets[id].fields[key]);
+        }        
+    }
+
     $(function() {
         $("#add_field").click(add_field);
         $("#delete_fields").click(delete_fields);
         $("#clear_fields").click(clear_fields);
+        $("#save_set").click(save_set);
         $("#sum_button").click(sum);
         $("#sum_ajax_button").click(sum_ajax);
         $("#show_button").click(show);
@@ -116,4 +152,5 @@
             $(this).closest('.field_row').remove();
             renumerate();
         });
+        $("#set").change(load_set);
     });
