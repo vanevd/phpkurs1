@@ -6,15 +6,16 @@
     </head>
     <body>
         <div id="sum_form" class="sum_form">
+            <div class="field_row">
+                <div class="label">Set</div>
+                <select id="set">
+                    <option value="0">Set 1</option>
+                    <option value="1">Set 2</option>
+                </select>
+                <input type="button" value="x" id="delete_set">
+            </div>
             <div id="fields">
-                <div class="field_row">
-                    <div class="label">Set</div>
-                    <select id="set">
-                        <option value=""></option>
-                        <option value="0">Set 1</option>
-                        <option value="1">Set 2</option>
-                    </select>    
-                </div>
+
                 <div class="field_row" data-num="1">
                     <div class="label">Field 1</div>
                     <input type="text" name="field" value="">
@@ -56,6 +57,12 @@
                 <input type="button" value="clear fields" id="clear_fields">
             </div>
             <div class="field_row">
+                <input type="button" value="new set" id="new_set">
+            </div>
+            <div class="field_row">
+                <input type="button" value="new random set" id="new_random_set">
+            </div>
+            <div class="field_row">
                 <div class="label">Set Name</div>
                 <input type="text" id="set_name" value="">
             </div>
@@ -71,6 +78,14 @@
             </div>
             <div class="field_row">
                 <input type="button" value="sum_ajax" id="sum_ajax_button">
+            </div>
+            <div class="field_row">
+                <div class="label">Set List</div>
+                <input type="text" id="set_list" value="">
+            </div>
+            <div class="field_row">
+                <input type="button" value="import" id="import_button">
+                <input type="button" value="export" id="export_button">
             </div>
         </div>
         <div class="field_row">

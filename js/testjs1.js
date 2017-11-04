@@ -120,31 +120,130 @@ sets.push(set);
     }
 
     function save_set() {
-        var fields = [];
-        $("[name=field]").each(function() {
-            fields.push($(this).val());
-        });
+        if ($('#set').val() !== null) {
+            var fields = [];
+            $("[name=field]").each(function() {
+                fields.push(parseInt($(this).val()));
+            });
+            var id = $('#set').val();
+            var name = $('#set_name').val();
+            $('#set option:selected').text(name);
+            sets[id].name = name;
+            sets[id].fields = fields;
+            sum();
+        }   
+    }
+    
+    function new_set() {
+        $('#fields').html('');
+        var name = 'Set ' + ($('#set option').length+1);
+        $('#set_name').val(name)
         var set = {
-            name: $('#set_name').val(),
+            name: name,
+            fields: []
+        }
+        sets.push(set);
+        $('#set').append($('<option>', {
+            value: sets.length-1,
+            text: name
+        }));
+        $('#set').val(sets.length-1);
+    }
+
+    function new_random_set() {
+        $('#fields').html('');
+        var fields = [];
+        var n = Math.floor(Math.random()*7)+3;
+        var i;
+        for (i=0; i<n; i++) {
+            fields.push(Math.floor(Math.random()*99)+1);
+        }
+        var name = 'Set ' + ($('#set option').length+1);
+        var set = {
+            name: name,
             fields: fields
         }
         sets.push(set);
+        $('#set_name').val(name);
+        $('#set').append($('<option>', {
+            value: sets.length-1,
+            text: name
+        }));
+        $('#set').val(sets.length-1);
+        load_set();
     }
 
-    function load_set(id) {
+    function load_set() {
+        var id = $('#set').val();
         $('#set_name').val(sets[id].name);
+        $('#result').val('');
         $('#fields').html('');
         for (key=0; key < sets[id].fields.length; key++) {
             add_field(sets[id].fields[key]);
-        }        
+        }
+        sum();
+        export_set();
+    }
+
+    function delete_set() {
+        var id = $('#set').val();
+        sets.splice(id, 1);
+        $('#set option:selected').remove();
+        var n = 0;
+        $('#set option').each(function() {
+            $(this).val(n);
+            n++;
+        });   
+        if (id <= n-1) {
+            $('#set').val(id);
+        } else {
+            $('#set').val(n-1);
+        }    
+        if (n > 0) {
+            load_set();
+        } else {
+            $('#result').val('');
+            $('#set_name').val('');
+            $('#fields').html('');
+        }    
+    }
+
+    function import_set() {
+        var s = $('#set_list').val();
+        var fields = s.split(',');
+        for (key in fields) {
+            fields[key] = parseInt(fields[key]);
+        }
+        /*
+        fields.forEach(function(value,key,array) {
+            array[key] = parseInt(value);
+        });
+        */
+        var id = $('#set').val();
+        if (id !== null) {
+            sets[id].fields = fields;
+            load_set();
+        }
+    }
+
+    function export_set() {
+        var fields  = [];
+        $("[name=field]").each(function() {
+            fields.push($(this).val());
+        });
+        $('#set_list').val(fields.toString());
     }
 
     $(function() {
         $("#add_field").click(add_field);
         $("#delete_fields").click(delete_fields);
         $("#clear_fields").click(clear_fields);
+        $("#new_set").click(new_set);
+        $("#new_random_set").click(new_random_set);
         $("#save_set").click(save_set);
         $("#sum_button").click(sum);
+        $("#import_button").click(import_set);
+        $("#export_button").click(export_set);
         $("#sum_ajax_button").click(sum_ajax);
         $("#show_button").click(show);
         $("#hide_button").click(hide);
@@ -152,5 +251,8 @@ sets.push(set);
             $(this).closest('.field_row').remove();
             renumerate();
         });
+        $("#delete_set").click(delete_set);
         $("#set").change(load_set);
+        $('#set').val(0);
+        load_set();
     });
