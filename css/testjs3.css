@@ -1,0 +1,18 @@
+    .city_row {
+        margin-top: 0px;
+    }
+
+    .city_row .label {
+        float: left;
+        width: 80px;
+    }
+
+    .city_row select {
+        width: 200px;
+        display: none;
+    }
+
+    .city_row input {
+        width: 200px;
+    }
+
