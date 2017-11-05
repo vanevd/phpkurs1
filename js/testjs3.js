@@ -45,7 +45,7 @@ function city_input_change(k) {
         return;
     }
     if (k.which == 13) {
-        if ($('#city_selected option').length > 0) {
+        if ($('#city_select option').length > 0) {
             city_select_click();
         } else {
             if ($('#city_input').val().length > 0) {
