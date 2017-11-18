@@ -1,0 +1,12 @@
+{
+    "system": {
+        "client_port": 8000,
+        "admin_port": 7000
+    },
+    "rabbitmq": {
+        "host": "localhost",
+        "user": "guest",
+        "password": "guest",
+        "queue_app_messages": "RdbAppMessages"
+   }
+}
