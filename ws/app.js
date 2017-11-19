@@ -9,29 +9,56 @@ io.on('connection', function (socket) {
     console.log('client connected');
     console.log(socket.id)
   
-    socket.on('register', function (data) {
-        if ( typeof users[socket.username] !== 'undefined') {
-            delete users[socket.username][socket.id];  
-            if (Object.keys(users[socket.username]).length == 0) {
-                delete users[socket.username];
+    socket.on('login', function (data) {
+        console.log(users)
+        if (typeof socket.username !== 'undefined') {
+            socket.emit('login', {status: 'error', data: {}, error: 'You are already logged.'});
+            return;
+        }
+        if ( typeof users[data.username] !== 'undefined') {
+            socket.emit('login', {status: 'error', data: {}, error: 'User already exists.'});
+            return;
+        }    
+
+        socket.username = data.username;
+        users[data.username] = {id: socket.id};
+        var logged_users = [];
+        for (c in io.clients().sockets) {
+            if ((typeof io.clients().sockets[c].username !== 'undefined')&&(io.clients().sockets[c].username != data.username)) {
+                logged_users.push(io.clients().sockets[c].username);
             }
-        }
-        socket.username = data.username;  
-        if ( typeof users[data.username] === 'undefined') {
-            users[data.username]= {};
-        }
-        users[data.username][socket.id] = socket.id;
-        socket.emit('registered');
+        }        
+
+        socket.emit('login', {status: 'ok', data: {logged_users: logged_users}, error: ''});
+        for (c in io.clients().sockets) {
+            if ((typeof io.clients().sockets[c].username !== 'undefined')&&(io.clients().sockets[c].username != data.username)) {
+                io.clients().sockets[c].emit('user_connected', {status: 'ok', data:{username: data.username, error: ''}});
+            }
+        }        
     
     });
 
+    socket.on('logout', function (data) {
+        if ( typeof socket.username !== 'undefined') {
+            delete users[socket.username];
+            for (c in io.clients().sockets) {
+                if ((typeof io.clients().sockets[c].username !== 'undefined')&&(io.clients().sockets[c].username != socket.username)) {
+                    io.clients().sockets[c].emit('user_disconnected', {status: 'ok', data:{username: socket.username, error: ''}});
+                }
+            } 
+            delete(socket.username);
+        }
+    });        
+
     socket.on('disconnect', function () {
         console.log('client disconnected');
-        if ( typeof users[socket.username] !== 'undefined') {
-            delete users[socket.username][socket.id];
-            if (Object.keys(users[socket.username]).length == 0) {
-                delete users[socket.username];
-            }
+        if ( typeof socket.username !== 'undefined') {
+            delete users[socket.username];
+            for (c in io.clients().sockets) {
+                if ((typeof io.clients().sockets[c].username !== 'undefined')&&(io.clients().sockets[c].username != socket.username)) {
+                    io.clients().sockets[c].emit('user_disconnected', {status: 'ok', data:{username: socket.username, error: ''}});
+                }
+            }        
         }
     });
 

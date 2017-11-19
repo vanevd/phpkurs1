@@ -1,12 +1,22 @@
 <html>
     <head>
         <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/notify.min.js"></script>
         <script src="js/testjs4.js"></script>
         <link rel="stylesheet" href="css/testjs4.css">
         <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     </head>
     <body>
-        <div id="messages">
-        </div>    
+        <div class="my_user">
+            Username <input id="username" value="">
+            <input type="button" id="login_btn" value="Login"> 
+            <input type="button" id="logout_btn" value="Logout">
+        <div>
+        <div class="msg">            
+            <div id="users">
+            </div>    
+            <div id="messages">
+            </div>    
+        </div>
     </body>
 </html>
