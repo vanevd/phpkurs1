@@ -50,6 +50,12 @@ io.on('connection', function (socket) {
         }
     });        
 
+    socket.on('send_msg', function (data) {
+        if (typeof users[data.username] !== 'undefined') {
+            io.clients().sockets[users[data.username].id].emit('receive_msg', {status: 'ok', data: {username: socket.username, msg_text: data.msg_text}, error: ''});
+        }
+    });        
+
     socket.on('disconnect', function () {
         console.log('client disconnected');
         if ( typeof socket.username !== 'undefined') {

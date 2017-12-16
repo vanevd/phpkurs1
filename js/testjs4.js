@@ -1,14 +1,16 @@
 var app = {};
+var selected_user = '';
 
 $(function() {
     socketConnect();
     $('#login_btn').click(login);
     $('#logout_btn').click(logout);
+    $('#send_btn').click(send_msg);
 });    
 
 function socketConnect() {
     if (typeof app.socket === 'undefined') {
-        app.socket = io.connect('localhost:8500');
+        app.socket = io.connect('192.168.1.171:8500');
         app.socket.on('disconnect', function (data) {
             console.log('disconnected');
         });
@@ -18,7 +20,7 @@ function socketConnect() {
                 console.log('User logged successfully.');
                 var i;
                 for (i in data.data.logged_users) {
-                    $('#users').append('<div id="username_' + data.data.logged_users[i] + '" class="user"><a href="#">' + data.data.logged_users[i] + '</a></div>');
+                    $('#users').append('<div id="username_' + data.data.logged_users[i] + '" class="user"><a href="#">' + data.data.logged_users[i] + '</a><span></span></div>');
                     $('#username_' + data.data.logged_users[i]).click(select_user);
                     $('#messages').append('<div id="messages_' + data.data.logged_users[i] + '" class="messages" style="display:none"><div class="user_title">'+data.data.logged_users[i]+'</div></div>');
                 }
@@ -29,12 +31,22 @@ function socketConnect() {
             }
         });
         app.socket.on('user_connected', function (data) {
+            console.log(data);
             if (data.status == 'ok') {
-                $('#users').append('<div id="username_' + data.data.username + '" class="user"><a href="#">' + data.data.username + '</a></div>');
+                $('#users').append('<div id="username_' + data.data.username + '" class="user"><a href="#">' + data.data.username + '</a><span></span></div>');
                 $('#username_' + data.data.username).click(select_user);
                 $('#messages').append('<div id="messages_' + data.data.username + '" class="messages" style="display:none"><div class="user_title">'+data.data.username+'</div></div>');
                 console.log('User ' + data.data.username  + ' connected.');
                 $.notify('User ' + data.data.username  + ' connected.', 'info')
+            }
+        });
+        app.socket.on('receive_msg', function (data) {
+            console.log(data);
+            if (data.status == 'ok') {
+                $('#messages_' + data.data.username).append('<span class="msg_user">'+data.data.username+':</span> <span class="msg_text">'+data.data.msg_text+'</span><br><br>');
+                if (data.data.username != selected_user) {
+                   $('#username_' + data.data.username + ' span').html('*');
+                }                
             }
         });
         app.socket.on('user_disconnected', function (data) {
@@ -86,6 +98,18 @@ function logout() {
 function select_user() {
     console.log('User ' + $(this).text() + ' selected.');
     $('.messages').hide();
-    $('#messages_' + $(this).text()).show();
+    selected_user = $(this).find('a').text();
+    $('#messages_' + selected_user).show();
+    $('#msg_text').val('');
+    $('#username_' + selected_user + ' span').html('');
+}
 
+function send_msg() {
+    if (selected_user.length == 0) {
+        alert('Please select user!');
+        return;
+    }
+    $('#messages_' + selected_user).append('<span class="my_msg_user">'+$('#username').val()+':</span> <span class="my_msg_text">'+$('#msg_text').val()+'</span><br><br>');
+    app.socket.emit('send_msg', {username: selected_user, msg_text: $('#msg_text').val()});
+    $('#msg_text').val('');
 }

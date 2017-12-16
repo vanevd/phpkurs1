@@ -6,6 +6,10 @@
     margin-top: 5px;
 }
 
+.user span {
+    color: red;
+}
+
 .user_title {
     margin-top: 5px;
     color: blue;
@@ -31,4 +35,34 @@
     border: 1px solid green;
     float: left;
     padding: 0 5px 5px 5px ;
+}
+
+.msg-send {
+    margin-top: 20px;
+    float:left;
+    clear: both;
+}
+
+.msg-send input[type="text"] {
+    width: 500px;
+}    
+
+.msg-send input[type="button"] {
+    width: 100px;
+}    
+
+.msg_user {
+    color: green;
+}
+
+.msg_text {
+    color: black;
+}
+
+.my_msg_user {
+    color: cyan;
+}
+
+.my_msg_text {
+    color: grey;
 }
