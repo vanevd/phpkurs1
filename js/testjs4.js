@@ -6,6 +6,7 @@ $(function() {
     $('#login_btn').click(login);
     $('#logout_btn').click(logout);
     $('#send_btn').click(send_msg);
+    $('#send_btn_all').click(send_msg_all);
 });    
 
 function socketConnect() {
@@ -112,4 +113,9 @@ function send_msg() {
     $('#messages_' + selected_user).append('<span class="my_msg_user">'+$('#username').val()+':</span> <span class="my_msg_text">'+$('#msg_text').val()+'</span><br><br>');
     app.socket.emit('send_msg', {username: selected_user, msg_text: $('#msg_text').val()});
     $('#msg_text').val('');
+}
+
+function send_msg_all() {
+    app.socket.emit('send_msg_all', {msg_text: $('#msg_text_all').val()});
+    $('#msg_text_all').val('');
 }

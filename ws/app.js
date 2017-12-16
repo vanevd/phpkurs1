@@ -56,6 +56,14 @@ io.on('connection', function (socket) {
         }
     });        
 
+    socket.on('send_msg_all', function (data) {
+        for (c in io.clients().sockets) {
+            if ((typeof io.clients().sockets[c].username !== 'undefined')&&(io.clients().sockets[c].username != socket.username)) {
+                io.clients().sockets[c].emit('receive_msg', {status: 'ok', data:{username: socket.username, msg_text: data.msg_text}, error: ''});
+            }
+        }   
+    });        
+
     socket.on('disconnect', function () {
         console.log('client disconnected');
         if ( typeof socket.username !== 'undefined') {
