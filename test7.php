@@ -1,13 +1,17 @@
 <?php
 //var_dump($_REQUEST);
+//var_dump($_GET);
+//var_dump($_POST);
 //var_dump($_SERVER);
-
+$data=false;
 $sum=0;
 if (isset($_REQUEST['field1'])) {
     $sum=$sum+$_REQUEST['field1'];
+    $data = true;
 }
 if (isset($_REQUEST['field2'])) {
     $sum=$sum+$_REQUEST['field2'];
+    $data = true;
 }
 
 
@@ -21,17 +25,14 @@ if (isset($_REQUEST['field2'])) {
     
     <body>
         <?php
-        if ($_SERVER['REQUEST_METHOD']=='POST') {
+        if (($_SERVER['REQUEST_METHOD']=='POST')||$data) {
         ?> 
        
             Sum=<?=$sum ?><br/><br/>
             <a href='test7.php'>Next</a>
         <?php
-        }
+        } else {
         ?>
-        <?php
-        if ($_SERVER['REQUEST_METHOD']=='GET') {
-        ?> 
         <form method="POST">
             Field 1<br/>
             <input type="text" name="field1"><br/>
