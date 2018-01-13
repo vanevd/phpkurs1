@@ -3,7 +3,8 @@
 
 </head>    
 <body>
-    <form method="POST" action="test101.php">
+{% if method == 'GET' %}
+    <form method="POST">
         Field 1<br/>
         <input type="text" name="field[]"><br/>
         <br/>
@@ -11,7 +12,7 @@
         <input type="text" name="field[]"><br/>
         <br/>
         Field 3<br/>
-        <input type="text" name="field[]" value="@field"><br/>
+        <input type="text" name="field[]"><br/>
         <br/>
         Field 4<br/>
         <input type="text" name="field[]"><br/>
@@ -22,6 +23,25 @@
         <input type="submit" value="Sum">
         
     </form>
+{% else %}
+<table>
+        <tr>
+            <th>Number</th>
+            <th>Value</th>
+        <tr>
+        {% for field in fields %}            
+        <tr>
+            <td>{{ field['number'] }}</td>
+            <td>{{ field['value'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    Sum = {{ sum }}<br>
+
+    Name = {{ name }}<br>
+
+{% endif %}    
 </body>
 </html>    
-
+    

@@ -1,0 +1,6 @@
+{
+    "name": "myapp",
+    "require": {
+        "twig/twig": "~2.0"
+    }    
+}
