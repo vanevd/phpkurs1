@@ -12,11 +12,11 @@ class MyApp
             $action = $_REQUEST['action'];
         }
         if ($action == 'MySum') {
-            $mypage = new MySum;
+            $mypage = new MySum('MySum.html');
         } elseif ($action == 'MyTest') {
-            $mypage = new MyTest;
+            $mypage = new MyTest('MyTest.html');
         } else {
-            $mypage = new MyError;
+            $mypage = new MyError('MyError.html');
         }
         $mypage->Run();
 

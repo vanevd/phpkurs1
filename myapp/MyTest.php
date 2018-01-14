@@ -1,13 +1,11 @@
 <?php
+require_once "BasePage.php";
 
-class MyTest
+class MyTest extends BasePage
 {
     public function Run ()
     {
-        $loader = new Twig_Loader_Filesystem('./templates');
-
-        $twig = new Twig_Environment($loader);
         $data = [];
-        echo $twig->render('MyTest.html', $data);               
+        echo $this->render($data);               
     }
 }

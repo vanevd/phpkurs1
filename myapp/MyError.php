@@ -1,13 +1,11 @@
 <?php
+require_once "BasePage.php";
 
-class MyError
+class MyError extends BasePage
 {
     public function Run ()
     {
-        $loader = new Twig_Loader_Filesystem('./templates');
-
-        $twig = new Twig_Environment($loader);
         $data = [];
-        echo $twig->render('MyError.html', $data);               
+        echo $this->render($data);               
     }
 }

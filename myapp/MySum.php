@@ -1,12 +1,10 @@
 <?php
+require_once "BasePage.php";
 
-class MySum
+class MySum extends BasePage
 {
     public function Run ()
     {
-        $loader = new Twig_Loader_Filesystem('./templates');
-
-        $twig = new Twig_Environment($loader);
         $data = [];
         $data['method'] = $_SERVER['REQUEST_METHOD'];
 
@@ -29,6 +27,6 @@ class MySum
             $data['name'] = strlen($_REQUEST['name'])>0?$_REQUEST['name']:'n/a';
                 
         }
-        echo $twig->render('MySum.html', $data);               
+        echo $this->render($data);               
     }
 }
