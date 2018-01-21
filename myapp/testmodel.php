@@ -3,19 +3,14 @@ require_once "autoload.php";
 
 use Models\Hotel;
 use Models\Product;
+use Models\Client;
 
-$mysli = new mysqli('localhost', 'testphp', 'testphp', 'testphp');
+//$hotel = new Hotel(['provider' => 'Mysql']);
+//$client = new Client(['provider' => 'Mysql']);
+$client = new Client(['provider' => 'Json']);
 
-$dbHotelProvider = new DbHotelProvider($mysqli);
-$hotel = new Hotel;
-$hotel->setProvider($dbHotelProvider);
+//$product = new Product(['provider' => 'Mysql']);
 
-$dbProductProvider = new DbProductProvider($mysqli);
-$product = new Product;
-$product->setProvider($dbProductProvider);
+//$hotel2 = new Hotel(['provider' => 'Json']);
 
-$jsonHotelProvider = new JsonHotelProvider("json/hotel.json");
-$hotel2 = new Hotel;
-$hotel2->setProvider($jsonHotelProvider);
-
-$hotel->list();
+$client->list();
