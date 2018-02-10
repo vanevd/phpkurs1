@@ -14,22 +14,22 @@ class BaseProvider implements ModelInterface
         $this->fields = $fields;
     }
     
-    public function list()
+    public function list($filter)
     {
 
     }
 
-    public function add()
+    public function add($row)
     {
 
     }
 
-    public function update()
+    public function update($id, $row)
     {
 
     }
 
-    public function delete()
+    public function delete($id)
     {
 
     }

@@ -11,23 +11,23 @@ class BaseModel implements ModelInterface
         $this->provider = new $provider_class($this->table, $this->fields);
     }
 
-    public function list()
+    public function list($filter)
     {
-        return $this->provider->list();
+        return $this->provider->list($filter);
     }
 
-    public function add(){
-        return $this->provider->add();
+    public function add($row){
+        return $this->provider->add($row);
     }
 
-    public function update()
+    public function update($id, $row)
     {
-        return $this->provider->update();
+        return $this->provider->update($id, $row);
     }
 
-    public function delete()
+    public function delete($id)
     {
-        return $this->provider->delete();
+        return $this->provider->delete($id);
     }
     
 }

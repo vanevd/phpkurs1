@@ -4,5 +4,5 @@ namespace Models;
 class Product extends BaseModel implements ModelInterface
 {
     protected $table = 'products';
-    protected $fields = ['name', 'code'];
+    protected $fields = ['id', 'product_name', 'product_code', 'price'];
 }
